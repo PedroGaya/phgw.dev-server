@@ -12,3 +12,5 @@ export const LOG_LEVEL = Bun.env.LOG_LEVEL ?? "debug";
 export const APP_HOST = envMustExist("APP_HOST");
 export const APP_PORT = envMustExist("APP_PORT");
 export const APP_URL = `http://${APP_HOST}:${APP_PORT}`;
+
+export const POSTS_DIR = envMustExist("POSTS_DIR");
