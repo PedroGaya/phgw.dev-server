@@ -22,7 +22,6 @@ type PostsYaml = {
 
 const file = Bun.file(POSTS_DIR + "/posts.yaml");
 const yaml = parse(await file.text()) as PostsYaml;
-console.log(yaml);
 
 const postFiles = (await readdir(POSTS_DIR, { recursive: true })).filter(
   (f) => f.includes(".md") && f != "README.md"

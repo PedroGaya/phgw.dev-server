@@ -4,10 +4,11 @@ import { posts } from "./routes/posts";
 import { categories } from "./routes/categories";
 import { tags } from "./routes/tags";
 import { series } from "./routes/series";
+import { NODE_ENV } from "./constants";
 
 export const app = new Elysia()
   .onRequest(({ request }) => {
-    console.log(request.method, request.url);
+    if (NODE_ENV == "development") console.log(request.method, request.url);
   })
   .get("/", () => {
     return "OK";
