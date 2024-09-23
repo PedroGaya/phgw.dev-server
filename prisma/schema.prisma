@@ -11,32 +11,32 @@ datasource db {
 }
 
 model Post {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
   title      String
-  subtitle   String
+  subtitle   String?
   content    String
-  category   Category? @relation(fields: [categoryId], references: [id])
-  series     Series?   @relation(fields: [seriesId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+  series     Series   @relation(fields: [seriesId], references: [id])
   tags       Tag[]
-  categoryId Int
-  seriesId   Int
+  categoryId String
+  seriesId   String
 }
 
 model Category {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   name  String
   posts Post[]
 }
 
 model Series {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   name  String
   posts Post[]
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   name  String
   posts Post[]
 }
