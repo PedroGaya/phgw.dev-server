@@ -1,5 +1,9 @@
 import { Elysia } from "elysia";
-import { findPost, getPosts } from "./crud/post";
+
+import { posts } from "./routes/posts";
+import { categories } from "./routes/categories";
+import { tags } from "./routes/tags";
+import { series } from "./routes/series";
 
 export const app = new Elysia()
   .onRequest(({ request }) => {
@@ -8,11 +12,7 @@ export const app = new Elysia()
   .get("/", () => {
     return "OK";
   })
-  .get("/posts", async () => {
-    const data = await getPosts();
-    return data;
-  })
-  .get("/posts/:id", async ({ params: { id } }) => {
-    const data = await findPost(id);
-    return id;
-  });
+  .use(posts)
+  .use(categories)
+  .use(tags)
+  .use(series);
