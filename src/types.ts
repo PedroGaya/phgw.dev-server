@@ -1,5 +1,6 @@
 export type Post = {
   createdAt: Date;
+  key: string;
   title: string;
   subtitle: string | null;
   content: string;

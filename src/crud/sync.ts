@@ -11,6 +11,7 @@ type PostsYaml = {
   series: string[];
   posts: {
     file: string;
+    key: string;
     title: string;
     subtitle: string;
     tags: string[];
@@ -59,6 +60,7 @@ for (const post of yaml.posts) {
   await prisma.post.create({
     data: {
       createdAt: post.createdAt,
+      key: post.key,
       title: post.title,
       subtitle: post.subtitle,
       content: content,

@@ -78,6 +78,7 @@ type PrismaPost = {
   }[];
 } & {
   id: string;
+  key: string;
   createdAt: Date;
   title: string;
   subtitle: string | null;
@@ -88,6 +89,7 @@ type PrismaPost = {
 function prismaDataToPost(post: PrismaPost): Post {
   return {
     createdAt: post.createdAt,
+    key: post.key,
     title: post.title,
     subtitle: post.subtitle,
     content: post.content,
