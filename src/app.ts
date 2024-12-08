@@ -7,7 +7,6 @@ import { series } from "./routes/series";
 import { NODE_ENV } from "./constants";
 
 import cors from "@elysiajs/cors";
-import { cv } from "./routes/cv";
 
 export const app = new Elysia()
   .use(cors())
@@ -20,5 +19,4 @@ export const app = new Elysia()
   .use(posts)
   .use(categories)
   .use(tags)
-  .use(series)
-  .use(cv);
+  .use(series);
